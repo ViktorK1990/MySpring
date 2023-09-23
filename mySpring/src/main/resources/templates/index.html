@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My first site</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<p class="hello" th:text="'Здравствуйте уважаемый ' + ${name} + ' !' " ></p>
+<div th:replace="layouts/header :: header"></div>
+<main class="index_main">
+    <div class="article">
+        <div th:each="el : ${article}">
+            <div><img th:src="${el.image}" th:alt="${el.tittle}">
+            <p th:text="${el.text}"></p>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

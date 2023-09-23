@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{photo.css}">
+    <title></title>
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+<main>
+    <div class="gallery" th:each="el:${pictures}">
+        <img class="gallery_image" th:src="${el.image}" th:alt="${el.id.toString()}">
+    </div>
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

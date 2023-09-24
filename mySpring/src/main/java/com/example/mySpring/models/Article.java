@@ -10,9 +10,17 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
 
     private String tittle, text, image;
+
+    public Article() {};
+
+    public Article(String tittle, String text, String image) {
+        this.tittle = tittle;
+        this.text = text;
+        this.image = image;
+    }
 
     public int getId() {
         return id;

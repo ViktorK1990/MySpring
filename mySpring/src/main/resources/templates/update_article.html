@@ -1,0 +1,20 @@
+<meta charset="UTF-8">
+<title>My first site</title>
+<link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<p class="hello" th:text="'Здравствуйте уважаемый ' + ${name} + ' !' " ></p>
+<div th:replace="layouts/header :: header"></div>
+<main class="index_main">
+   <div>
+       <form method="post">
+           <input type="text" name="tittle" th:placeholder="${article.getTittle()}">
+           <input type="text" name="image" th:placeholder="${article.getImage()}">
+           <input type="text" name="text" th:placeholder="${article.getText()}">
+           <button type="submit">Внести изменения</button>
+       </form>
+   </div>
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

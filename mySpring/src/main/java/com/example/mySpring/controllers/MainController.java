@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.management.modelmbean.ModelMBeanOperationInfo;
@@ -22,17 +23,19 @@ public class MainController {
     private ImageRepository imageRepository;
 
 
+
+    @GetMapping
+    public String index(@RequestParam(name = "user", required = false, defaultValue = "пользователь") String param, Model model) {
+        model.addAttribute("name", param);
+        Iterable<Article> article = articleRepository.findAll();
+        model.addAttribute("article", article);
+        return "index";
+    }
     @GetMapping("/about")
     public String about(Model model) {
-        Optional<Article> article = articleRepository.findById(5);
+        Article article = articleRepository.findById(5).orElse(new Article());
         model.addAttribute("img", article);
         return "about";
     }
-
-    @GetMapping("/photo")
-    public String photo(Model model) {
-        Iterable<Image> images = imageRepository.findAll();
-        model.addAttribute("pictures", images);
-        return "photo";
-    }
 }
+

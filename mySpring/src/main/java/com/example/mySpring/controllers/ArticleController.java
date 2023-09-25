@@ -21,33 +21,47 @@ public class ArticleController {
     }
 
     @PostMapping("/add_article")
-    public String addArticle(@RequestParam(name = "text", required = false, defaultValue = "`1") String tittle,
-                             @RequestParam(name = "text", required = false, defaultValue = "1") String text,
-                             @RequestParam(name = "image", required = false, defaultValue = "1") String image) {
+    public String addArticle(@RequestParam(name = "text", required = false, defaultValue = "Пустое поле") String tittle,
+                             @RequestParam(name = "text", required = false, defaultValue = "Пустое поле") String text,
+                             @RequestParam(name = "image", required = false, defaultValue = "Пустое поле") String image) {
         Article article = new Article(tittle, text, image);
         articleRepository.save(article);
         System.out.println(tittle);
         return "redirect:/";
     }
 
-    @GetMapping("/article/update/{id}")
+    @GetMapping("/article/{id}")
     public String chooseArticle(@PathVariable(value = "id") int id, Model model) {
         Article article = articleRepository.findById(id).orElse(new Article());
         model.addAttribute("article", article);
-        return "/update_article";
+        return "article";
+    }
+
+    @GetMapping("/article/update/{id}")
+    public String changeArticle(@PathVariable(value = "id") int id, Model model) {
+        Article article = articleRepository.findById(id).orElse(new Article());
+        model.addAttribute("article", article);
+        return "update_article";
     }
 
     @PostMapping("/article/update/{id}")
     public String updateArticle(@PathVariable(value = "id") int id, Model model,
-                                @RequestParam(name = "tittle", required = true, defaultValue = "3") String tittle,
-                                @RequestParam(name = "text", required = true, defaultValue = "3") String text,
-                                @RequestParam(name = "image", required = true, defaultValue = "3") String image) {
+                                @RequestParam(name = "tittle", required = true, defaultValue = "Пустое поле") String tittle,
+                                @RequestParam(name = "text", required = true, defaultValue = "Пустое поле") String text,
+                                @RequestParam(name = "image", required = true, defaultValue = "Пустое поле") String image) {
 
         Article article = articleRepository.findById(id).orElse(new Article());
         article.setTittle(tittle);
         article.setText(text);
         article.setImage(image);
         articleRepository.save(article);
+        return "redirect:/article/" + id;
+    }
+
+    @PostMapping("/article/delete/{id}")
+    public String delete(@PathVariable(name = "id") int id) {
+        Article article = articleRepository.findById(id).orElse(new Article());
+        articleRepository.delete(article);
         return "redirect:/";
     }
 

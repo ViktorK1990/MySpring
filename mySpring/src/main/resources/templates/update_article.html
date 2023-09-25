@@ -8,9 +8,9 @@
 <main class="index_main">
    <div>
        <form method="post">
-           <input type="text" name="tittle" th:placeholder="${article.getTittle()}">
-           <input type="text" name="image" th:placeholder="${article.getImage()}">
-           <input type="text" name="text" th:placeholder="${article.getText()}">
+           <input type="text" name="tittle" th:value="${article.getTittle()}">
+           <input type="text" name="image" th:value="${article.getImage()}">
+           <input type="text" name="text" th:value="${article.getText()}">
            <button type="submit">Внести изменения</button>
        </form>
    </div>

@@ -12,7 +12,7 @@
     <div class="article">
         <div th:each="el : ${article}">
             <div>
-                <a th:href="'article/update/' + ${el.getId()}"><img th:src="${el.image}" th:alt="${el.tittle}"></a>
+                <a th:href="'article/' + ${el.getId()}"><img th:src="${el.image}" th:alt="${el.tittle}"></a>
             <p th:text="${el.text}"></p>
             </div>
         </div>

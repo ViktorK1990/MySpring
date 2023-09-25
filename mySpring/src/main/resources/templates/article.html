@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My first site</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+<main class="index_main">
+    <div class="article">
+        <div>
+            <div >
+                <img th:src="${article.getImage()}" th:alt="${article.getTittle}">
+                <div><p th:text="${article.getText()}"></p></div>
+                <a th:href="'/article/update/' + ${article.getId()}">Редактировать</a>
+                <form th:action="'/article/delete/' + ${article.getId()}" method="post">
+                    <button type="submit">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

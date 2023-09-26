@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Контакты</title>
     <link rel="stylesheet" th:href="@{about.css}">
 </head>
 <body>
 <div th:replace="layouts/header :: header"></div>
 <main class="main">
 <div class="contact">
-    <div><img class="contact_img" th:src="${img.get().getImage()}"></div>
+    <div><img class="contact_img" th:src="${img.getImage()}"></div>
     <div class="contact_text">
         <span>Контакты:<br>Телефон: 1111111<br>Адрес: планета Земля</span>
     </div>

@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" th:href="@{about.css}">
+    <title>Добавить статью</title>
+    <link rel="stylesheet" th:href="@{main.css}">
 </head>
 <body>
 <div th:replace="layouts/header :: header"></div>
 <main>
-    <form action="/add_article" method="post" >
-        <input type="text" name="tittle" placeholder="Введите название">
-        <input type="text" name="image" placeholder="Введите url изображения">
-        <textarea name="text" placeholder="Введите текст статьи"></textarea>
-        <button type="submit">Добавить статью</button>
+    <form style="text-align: center" action="/add_article" method="post" >
+        <input class="input_field" type="text" name="tittle" placeholder="Введите название">
+        <input class="input_field" type="text" name="image" placeholder="Введите url изображения">
+        <textarea id="textArea" class="input_field" name="text" placeholder="Введите текст статьи"></textarea>
+        <button id="add_btn" type="submit">Добавить статью</button>
     </form>
 </main>
 <div th:replace="layouts/footer :: footer"></div>

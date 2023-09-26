@@ -1,9 +1,6 @@
 package com.example.mySpring.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Article {
@@ -12,7 +9,10 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String tittle, text, image;
+    private String tittle, image;
+
+    @Column(length = 10000)
+    private String text;
 
     public Article() {};
 

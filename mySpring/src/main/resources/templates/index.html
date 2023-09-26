@@ -9,11 +9,15 @@
 <p class="hello" th:text="'Здравствуйте уважаемый ' + ${name} + ' !' " ></p>
 <div th:replace="layouts/header :: header"></div>
 <main class="index_main">
+    <div class="btn">
+        <a class="link" href="/login">Войти</a>
+        <a  class="link" href="/reg">Регистрация</a>
+    </div>
     <div class="article">
         <div th:each="el : ${article}">
             <div>
-                <a th:href="'article/' + ${el.getId()}"><img th:src="${el.image}" th:alt="${el.tittle}"></a>
-            <p th:text="${el.text}"></p>
+                <a th:href="'article/' + ${el.getId()}"><img th:src="${el.getImage()}" th:alt="${el.getTittle()}"></a>
+            <p th:text="${el.text.substring(0,200)} + '...'"></p>
             </div>
         </div>
     </div>

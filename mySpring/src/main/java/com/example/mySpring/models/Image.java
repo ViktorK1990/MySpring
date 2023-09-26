@@ -13,9 +13,17 @@ public class Image {
     private int id;
     private String image;
 
+    public Image(){}
+
+    public Image(int id, String image) {
+        this.id = id;
+        this.image = image;
+    }
+
     public Integer getId() {
         return id;
     }
+
 
     public void setId(Integer id) {
         this.id = id;

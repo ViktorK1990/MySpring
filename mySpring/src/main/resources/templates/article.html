@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>My first site</title>
+    <title>Статья</title>
     <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
@@ -10,12 +10,12 @@
 <main class="index_main">
     <div class="article">
         <div>
-            <div >
+            <div style="text-align: center">
                 <img th:src="${article.getImage()}" th:alt="${article.getTittle}">
                 <div><p th:text="${article.getText()}"></p></div>
-                <a th:href="'/article/update/' + ${article.getId()}">Редактировать</a>
+               <div id="btn_edit" style="text-align: center"> <a  th:href="'/article/update/' + ${article.getId()}" >Редактировать</a> </div>
                 <form th:action="'/article/delete/' + ${article.getId()}" method="post">
-                    <button type="submit">Удалить</button>
+                    <button id="btn_del" type="submit">Удалить</button>
                 </form>
             </div>
         </div>

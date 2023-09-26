@@ -24,6 +24,9 @@ body {
     margin-top: 20px;
 }
 
+h1 {
+    text-align: center;
+}
 main {
     background-color: #383838;
 }
@@ -52,4 +55,102 @@ a {
 
 header nav a {
     margin-right: 20px;
+}
+
+.input_field {
+    display: block;
+    border-radius: 15px;
+    margin-left: 620px;
+    margin-top: 20px;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.btn_auth {
+    margin: 10px;
+    background-color: #232320;
+    border-radius: 15px;
+    border-color: white;
+    -webkit-text-fill-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+}
+
+.formLogin{
+    text-align: center;
+}
+
+#exit_btn {
+    margin: 10px;
+    margin-left: 1300px;
+    background-color: #232320;
+    border-radius: 15px;
+    border-color: white;
+    -webkit-text-fill-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+}
+
+#change_btn, #btn_changeArticle, #btn_del, #add_btn, #reg_btn {
+    margin-top: 50px;
+    background-color: #232320;
+    border-radius: 15px;
+    border-color: white;
+    -webkit-text-fill-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 200px;
+    height: 30px;
+}
+#btn_edit {
+    text-align: center;
+    justify-content: center;
+    padding-top: 5px;
+    margin-top: 50px;
+    background-color: #232320;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 2px;
+    border-color: white;
+    -webkit-text-fill-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 200px;
+    height: 30px;
+}
+
+
+main div .link{
+    display: block;
+    justify-content: center;
+    text-align: center;
+    padding-top: 5px;
+    margin-top: 15px;
+    margin-left: 1200px;
+    background-color: #232320;
+    border-radius: 15px;
+    border-color: white;
+    border-width: 5px;
+    -webkit-text-fill-color: white;
+    font-family: 'Roboto', sans-serif;
+    width: 200px;
+    height: 30px;
+}
+
+main div .article {
+    display: block;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+#textArea, #textAreaEdit {
+    resize: none;
+    width: 600px;
+    height: 250px;
 }

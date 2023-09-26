@@ -33,8 +33,8 @@ public class MainController {
     }
     @GetMapping("/about")
     public String about(Model model) {
-        Article article = articleRepository.findById(5).orElse(new Article());
-        model.addAttribute("img", article);
+        Image image = imageRepository.findById(1).orElse(new Image(1," https://catherineasquithgallery.com/uploads/posts/2021-03/1614587275_6-p-kartinka-telefon-na-belom-fone-6.png"));
+        model.addAttribute("img", image);
         return "about";
     }
 }

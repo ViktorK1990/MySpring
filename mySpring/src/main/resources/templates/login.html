@@ -9,7 +9,7 @@
 <div th:replace="layouts/header :: header"></div>
 <main>
     <div class="formLogin">
-    <form  action="/login" method="post" >
+    <form  th:action="@{/login}" method="post" >
         <input class="input_field" type="text" name="username" placeholder="Введите логин">
         <input class="input_field" type="password" name="password" placeholder="Введите пароль">
         <button class="btn_auth" type="submit">Войти</button>

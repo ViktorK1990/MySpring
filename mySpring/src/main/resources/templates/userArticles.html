@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>My first site</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+<main class="index_main">
+    <h1>Статьи автора</h1>
+<div th:each="el : ${articles}">
+    <div class="article_div">
+    <img th:src="${el.getImage()}">
+    <a class="link_article" th:text="' - ' + ${el.getTittle()}" th:href="'/article/' + ${el.getId()}"></a>
+    </div>
+</div>
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>

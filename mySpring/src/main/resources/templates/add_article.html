@@ -8,7 +8,7 @@
 <body>
 <div th:replace="layouts/header :: header"></div>
 <main>
-    <form style="text-align: center" action="/add_article" method="post" >
+    <form style="text-align: center" th:action="@{/add_article}" method="post" >
         <input class="input_field" type="text" name="tittle" placeholder="Введите название">
         <input class="input_field" type="text" name="image" placeholder="Введите url изображения">
         <textarea id="textArea" class="input_field" name="text" placeholder="Введите текст статьи"></textarea>

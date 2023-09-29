@@ -11,11 +11,11 @@
   <div class="contact">
    <h1>Личный кабинет</h1>
       <h2 th:text="${data}" style="text-align: center; color: azure " ></h2>
-    <form action="/logout" method="post">
+    <form th:action="@{/logout}" method="post">
       <button id="exit_btn" type="submit">Выйти</button>
     </form>
         <div style="text-align: center">
-      <form action="/user" method="post">
+      <form th:action="@{/user}" method="post">
           <input class="input_field" type="text" name="username" th:value="${user.getUsername()}" readonly>
           <input class="input_field" type="password" name="password" placeholder="Введите новый пароль">
           <input class="input_field" type="email" name="email" th:value="${user.getEmail()}" placeholder="Введите новый email">

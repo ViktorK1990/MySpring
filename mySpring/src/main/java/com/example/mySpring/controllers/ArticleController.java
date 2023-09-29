@@ -1,8 +1,10 @@
 package com.example.mySpring.controllers;
 
 import com.example.mySpring.models.Article;
+import com.example.mySpring.models.User;
 import com.example.mySpring.repo.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +23,11 @@ public class ArticleController {
     }
 
     @PostMapping("/add_article")
-    public String addArticle(@RequestParam(name = "text", required = false, defaultValue = "Пустое поле") String tittle,
+    public String addArticle(@AuthenticationPrincipal User user,
+                             @RequestParam(name = "tittle", required = false, defaultValue = "Пустое поле") String tittle,
                              @RequestParam(name = "text", required = false, defaultValue = "Пустое поле") String text,
                              @RequestParam(name = "image", required = false, defaultValue = "Пустое поле") String image) {
-        Article article = new Article(tittle, text, image);
+        Article article = new Article(tittle, text, image, user);
         articleRepository.save(article);
         System.out.println(tittle);
         return "redirect:/";

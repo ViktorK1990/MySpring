@@ -14,12 +14,18 @@ public class Article {
     @Column(length = 10000)
     private String text;
 
+
+    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
     public Article() {};
 
-    public Article(String tittle, String text, String image) {
+    public Article(String tittle, String text, String image, User user) {
         this.tittle = tittle;
         this.text = text;
         this.image = image;
+        this.user = user;
     }
 
     public int getId() {
@@ -52,5 +58,13 @@ public class Article {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

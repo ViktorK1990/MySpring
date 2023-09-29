@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>My first site</title>
@@ -9,7 +10,7 @@
 <p class="hello" th:text="'Здравствуйте уважаемый ' + ${name} + ' !' " ></p>
 <div th:replace="layouts/header :: header"></div>
 <main class="index_main">
-    <div class="btn">
+    <div sec:authorize="!isAuthenticated()" class="btn">
         <a class="link" href="/login">Войти</a>
         <a  class="link" href="/reg">Регистрация</a>
     </div>

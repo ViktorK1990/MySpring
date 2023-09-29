@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Статья</title>
@@ -11,10 +12,15 @@
     <div class="article">
         <div>
             <div style="text-align: center">
+                <div>
                 <img th:src="${article.getImage()}" th:alt="${article.getTittle}">
-                <div><p th:text="${article.getText()}"></p></div>
-               <div id="btn_edit" style="text-align: center"> <a  th:href="'/article/update/' + ${article.getId()}" >Редактировать</a> </div>
-                <form th:action="'/article/delete/' + ${article.getId()}" method="post">
+                </div>
+                <div class="contact_text">
+                    <p th:text="'Название: ' + ${article.getTittle()}"></p>
+                    <p th:text="'Автор: ' + ${article.getUser().getUsername()}"></p></div>
+                <div><p class="article_text" th:text="${article.getText()}"></p></div>
+               <div sec:authorize="hasAuthority('ADMIN') || hasAuthority('REDACTOR')" id="btn_edit" style="text-align: center"> <a  th:href="'/article/update/' + ${article.getId()}" >Редактировать</a> </div>
+                <form sec:authorize="hasAuthority('ADMIN') || hasAuthority('REDACTOR')" th:action="'/article/delete/' + ${article.getId()}" method="post">
                     <button id="btn_del" type="submit">Удалить</button>
                 </form>
             </div>

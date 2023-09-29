@@ -8,7 +8,7 @@
 <body>
 <div th:replace="layouts/header :: header"></div>
 <main>
-    <form action="/reg" method="post"  style="text-align: center">
+    <form th:action="@{/reg}" method="post"  style="text-align: center">
         <input class="input_field" type="text" name="username" placeholder="Введите логин">
         <input class="input_field" type="password" name="password" placeholder="Введите пароль">
         <input class="input_field" type="email" name="email" placeholder="Введите email">

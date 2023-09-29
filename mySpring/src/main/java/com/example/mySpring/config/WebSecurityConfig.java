@@ -1,5 +1,6 @@
 package com.example.mySpring.config;
 
+import com.example.mySpring.sevices.UserSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,11 +18,11 @@ import javax.sql.DataSource;
 public class WebSecurityConfig {
 
     @Autowired
-    private DataSource dataSource;
+    private UserSevice userSevice;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/add_article", "/article/update/*", "/user").authenticated()
                         .requestMatchers("/**").permitAll()
@@ -39,12 +40,8 @@ public class WebSecurityConfig {
 
     @Autowired
     public void auth(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .usersByUsernameQuery("SELECT username, password, enabled from user WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT user.username, user_role.roles FROM user INNER JOIN user_role " +
-                        "ON user.id = user_role.user_id WHERE user.username = ?");
+        auth.userDetailsService(userSevice)
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Bean

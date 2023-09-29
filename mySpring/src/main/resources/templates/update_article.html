@@ -7,7 +7,7 @@
 <div th:replace="layouts/header :: header"></div>
 <main class="index_main">
    <div style="text-align: center">
-       <form class="form"  method="post">
+       <form class="form"  th:action="@{'/article/update/' + ${article.getId()}}" method="post">
            <input class="input_field" type="text" name="tittle" th:value="${article.getTittle()}">
            <input class="input_field" type="text" name="image" th:value="${article.getImage()}">
            <textarea id="textAreaEdit" class="input_field"  name="text" th:text="${article.getText()}"></textarea>
